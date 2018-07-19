@@ -342,10 +342,10 @@ int getVTblAddr(void)
 			menu_DisplayMain();
 		}
 		
-		if(new_pad & PAD_R1)
+		if(new_pad & PAD_SQUARE)
 		{
 			scr_clear();
-			//isCurrentPatch();
+			menu_PatchInformation();
 		}
 		if(new_pad & PAD_START)
 		{
@@ -489,6 +489,7 @@ int getVTblAddr(void)
 			*(u32*)0x8007A1F8 = 0x00000000; //DNS Data 5
 			*(u32*)0x8007A1FC = 0x005E03B4; //DNS Address 6
 			*(u32*)0x8007A200 = 0x00000000; //DNS Data 6
+
 			*(u32*)0x8007A204 = 0x000C0000; //Begin Routine Loader that is going to be needed to load data due to how elf's are loaded in this game
 			*(u32*)0x8007A208 = 0x3c08000c;
 			*(u32*)0x8007A20C = 0x000C0004;
@@ -508,21 +509,20 @@ int getVTblAddr(void)
 			*(u32*)0x8007A244 = 0x000C0028;
 			*(u32*)0x8007A248 = 0x03e00008;
 			
-			//Begin Translation Stack
-			*(u32*)0x8007A24C = 0x000C0034; //Chaos Gate
-			*(u32*)0x8007A250 = 0x008A58B8;
+			//Begin Online Code Stack
+			*(u32*)0x8007A24C = 0x000C0034;
+			*(u32*)0x8007A250 = 0x00177528;
 			*(u32*)0x8007A254 = 0x000C0038;
-			*(u32*)0x8007A258 = 0x6F616843;
+			*(u32*)0x8007A258 = 0x00001021;
 			*(u32*)0x8007A25C = 0x000C003C;
-			*(u32*)0x8007A260 = 0x008A58BC;
+			*(u32*)0x8007A260 = 0x0028733c;
 			*(u32*)0x8007A264 = 0x000C0040;
-			*(u32*)0x8007A268 = 0x61472073;
+			*(u32*)0x8007A268 = 0x00003021;
 			*(u32*)0x8007A26C = 0x000C0044;
-			*(u32*)0x8007A270 = 0x008A58C0;
+			*(u32*)0x8007A270 = 0x002CB9F0;
 			*(u32*)0x8007A274 = 0x000C0048;
-			*(u32*)0x8007A278 = 0x00006574;
-			
-			
+			*(u32*)0x8007A278 = 0x00003021;
+
 			*(u32*)0x8007A27C = 0x0013182C; //SCEPadRead Hook (online only) 
 			*(u32*)0x8007A280 = 0x08030000;
 			*(u32*)0x8007A284 = 0x00000000; //Terminating Line
@@ -537,9 +537,7 @@ int getVTblAddr(void)
 			LoadExecPS2("cdrom0:\\SLPS_255.27;1", 0, NULL); // needed for loading SCUS after patch
 		}		
 	}
-	
-	//scr_printf(GAME_EXE);
-	//isCurrent();
+
    return 0;
 }
 
