@@ -12,8 +12,10 @@
 #include "malloc.h"
 #include "libcdvd.h"
 #include "r5900_regs.h"
-#include "fragmentPatcher.h"
-
+#include <iopheap.h>
+#include <sbv_patches.h>
+#include "math.h"
+#include "menu.h"
 
 
 #define _RESIDENT_	__attribute__((section(".resident")))

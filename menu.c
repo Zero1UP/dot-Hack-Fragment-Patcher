@@ -34,8 +34,3 @@ void menu_PatchInformation(void)
 	scr_printf("Press CROSS to return to main screen. \n");
 
 }
-
-void menu_GameInformation(void)
-{
-	
-}
