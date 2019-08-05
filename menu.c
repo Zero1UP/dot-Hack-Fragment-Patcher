@@ -1,7 +1,7 @@
 #include "menu.h"
 void menu_DisplayMain(void)
 {
-	char *currentVersion = "Patch Version: 1.02\n";
+	char *currentVersion = "Patch Version: 1.03\n";
 	
 	
 	scr_printf(".hack//Fragment Patcher by 1UP\n");
@@ -29,7 +29,6 @@ void menu_PatchInformation(void)
 	scr_printf("DNS Updated to connect to Alkalime's Lobby Server\n");
 	scr_printf("No translations are available.\n");
 	scr_printf("Disable item loss on crash. (ONLINE ONLY) \n");
-	scr_printf("Disables the intro video from being played. This is an issue with the emulator unless the game fix is applied manually. \n");
 	scr_printf("You will not have to have this setting set. \n");
 	scr_printf("Press CROSS to return to main screen. \n");
 
