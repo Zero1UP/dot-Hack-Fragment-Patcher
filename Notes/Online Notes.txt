@@ -7,34 +7,3 @@ Disable EXP Loss
 Hooks
 SCEPadRead Hookd
 0013182C
-
-
-Translations
-
-
-Objects
------------------------------------------------
-Chaos Gate
-008A58B8 6F616843
-008A58BC 61472073
-008A58C0 00006574
-
-
-NPCs
------------------------------------------------
-Elf's Haven
-008A4610 27666C45
-008A4614 61482073
-008A4618 006E6576
-
-Recorder
-008738D0 008A4670
-
-Item Shop
-008A4638 008A4640
-
-Magic Shop
-00873860 008A4658
-
-Equip Shop
-00873710 008A45F0
