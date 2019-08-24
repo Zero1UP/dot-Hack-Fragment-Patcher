@@ -1,7 +1,7 @@
 #include "menu.h"
 void menu_DisplayMain(void)
 {
-	char *currentVersion = "Patch Version: 1.0.4 beta \n";
+	char *currentVersion = "Patch Version: 1.0.4 beta 2 \n";
 	
 	scr_printf(".hack//Fragment Patcher by 1UP\n");
 	scr_printf(currentVersion);
@@ -29,6 +29,9 @@ void menu_PatchInformation(void)
 	scr_printf("No translations are available.\n");
 	scr_printf("Disable item loss on crash. (ONLINE ONLY) \n");
 	scr_printf("You will not have to have this setting set. \n");
+	scr_printf("------------------------------------------- \n");
+	scr_printf("BETA INFORMATION!! \n");
+	scr_printf("Changed where the patcher checks for which file is loaded. \n");
 	scr_printf("Press CROSS to return to main screen.");
 
 }

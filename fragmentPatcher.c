@@ -64,7 +64,7 @@ int port, slot;
 	extern void readPad(void);
 	extern int j_defhandler;
 
-
+	void initalise();
 void initalise(void)
 {
 	int ret;
@@ -477,8 +477,8 @@ int getVTblAddr(void)
 			*(u32*)0x8007A23C = 0x8D0AA228;
 			*(u32*)0x8007A240 = 0x8D0BA22C;
 			*(u32*)0x8007A244 = 0x8D0CA230;
-			*(u32*)0x8007A248 = 0x3C0D8001;
-			*(u32*)0x8007A24C = 0x35AD4C14;
+			*(u32*)0x8007A248 = 0x3C0D8007;
+			*(u32*)0x8007A24C = 0x35AD537C;
 			*(u32*)0x8007A250 = 0x8DAE0000;
 			*(u32*)0x8007A254 = 0x11C00023;
 			*(u32*)0x8007A258 = 0x00000000;
@@ -544,9 +544,9 @@ int getVTblAddr(void)
 			*(u32*)0x8007A700 = 0x002a87a8;
 			*(u32*)0x8007A704 = 0x24020001;
 
+
+
 			*(u32*)0x800002FC = 0x0C01E800;
-
-
 
 
 			ee_kmode_exit();

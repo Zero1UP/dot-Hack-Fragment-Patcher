@@ -13,7 +13,7 @@ lw t3, $a22c(t0)
 //  _01.ELF < Offline ELF
 lw t4, $a230(t0) 
 // currently loaded ELF
-setreg t5,$80014c14 
+setreg t5,$8007537C
 // Load the currently loaded elf text
 lw t6 zero(t5) 
 
