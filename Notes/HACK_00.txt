@@ -1,0 +1,55 @@
+Disable EXP Loss
+0026E974 00000000
+
+Alks Server Address
+005E03A0 6F642E61
+005E03A4 63616874
+005E03A8 7372656B
+005E03AC 67726F2E
+005E03B0 00000000
+005E03B4 00000000
+
+DNAS ByPass
+002a87a8 24020001
+
+Hooks
+--------------------
+SCEPadRead Hook
+0013182C
+
+3rd person camera hook
+0015BD8C
+
+
+
+
+
+Code is based on the recent translation and will need to be ported
+------------------------------------------------------------------
+Disable auto run
+2080CF64 00000000
+
+Camera States
+206536CC 0000000X
+X = 1 = First person
+X = 3 = Third
+anything else locks it
+
+Minimap toggle
+2091D7D8 0000000X
+
+X = 0 = minimap on
+X = 1 = minimap off
+Anything else is on
+
+Infintie item useage
+0017CF2C 
+
+Joker Address
+00643980
+
+
+Menu notes
+--------------------
+Triangle Menu item selection (main menu)
+0070284A 000X

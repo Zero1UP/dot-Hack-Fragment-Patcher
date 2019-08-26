@@ -1,7 +1,4 @@
-skip fmv
-00113cf0 24020001
-
-Routine Loader
+Code Loader
 000C0000 3c08000c 
 000C0004 35080034
 000C0008 8d090000
@@ -12,20 +9,39 @@ Routine Loader
 000C0024 25080008
 000C0028 03e00008
 
-Alks Server Address
-005E03A0 6F642E61
-005E03A4 63616874
-005E03A8 7372656B
-005E03AC 67726F2E
-005E03B0 00000000
-005E03B4 00000000
-
-DNAS ByPass
-002a87a8 24020001
-
 Current Running Binary (Going to be used as a check)
-00014C14
+0007537C
 
 3535325F  = _255.27 < Main Binary
 2E30305F  = _00.ELF < Online elf is currently loaded
 2E31305F  = _01.ELF < Single Player elf is currently loaded
+
+
+Entity State
+00000020 - Enemy
+00000021 - Data Drained
+00000008 - Goes inactive
+00000007 - Data drained and disappears (room locked)
+00000009 - Instantly kills it
+00000010 - Acts as an NPC (talk option but nothing happens)
+00000011 - Instantly kills it
+00000012 - Data drained and disappears (room locked)
+00000013 - Data drained and disappears (room locked)
+00001000 - door
+00005000 - chaos gate
+00001000 - door (loads nothing, soft lock)
+00020000 - breakable item
+10000000 - dungeon entrance
+00000100 - weapon vendor
+00000200 - banker
+00000300 - Weapon vendor
+00000400 - Healing vendor
+00000500 - Weapon vendor
+00000600 - Healing vendor
+00000A00 - Magic vendor
+
+
+
+
+
+Code is based on the recent translation and will need to be ported

@@ -1,0 +1,10 @@
+Hooks
+SCEPadRead1
+001283C8
+
+SCEPadRead2
+001285EC
+
+
+Code is based on the recent translation and will need to be ported
+

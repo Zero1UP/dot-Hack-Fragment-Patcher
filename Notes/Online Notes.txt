@@ -1,9 +1,0 @@
-Fixes
------------------------------------------------
-Disable EXP Loss
-0026E974 00000000
-
-
-Hooks
-SCEPadRead Hookd
-0013182C

@@ -1,0 +1,4 @@
+skip fmv
+00113cf0 24020001
+
+Code is based on the recent translation and will need to be ported
