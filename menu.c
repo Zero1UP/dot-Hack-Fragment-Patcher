@@ -1,7 +1,7 @@
 #include "menu.h"
 void menu_DisplayMain(void)
 {
-	char *currentVersion = "Patch Version: 1.0.4 beta 2 \n";
+	char *currentVersion = "Patch Version: 1.0.5\n";
 	
 	scr_printf(".hack//Fragment Patcher by 1UP\n");
 	scr_printf(currentVersion);
@@ -10,7 +10,6 @@ void menu_DisplayMain(void)
 	scr_printf("Press SQUARE for more information. \n");
 	scr_printf("Press CIRCLE to view about. \n");
 	scr_printf("Press CROSS to return to main screen. \n");
-	//scr_printf("Press SELECT to load the patch with O and X swapped. \n");
 	scr_printf("Press START to load the patch and start the game.");
 }
 
@@ -30,8 +29,8 @@ void menu_PatchInformation(void)
 	scr_printf("Disable item loss on crash. (ONLINE ONLY) \n");
 	scr_printf("You will not have to have this setting set. \n");
 	scr_printf("------------------------------------------- \n");
-	scr_printf("BETA INFORMATION!! \n");
-	scr_printf("Changed where the patcher checks for which file is loaded. \n");
+	scr_printf("1.0.5 Changes \n");
+	scr_printf("Fixed a bug with the game crashing on an original version of the game. \n");
 	scr_printf("Press CROSS to return to main screen.");
 
 }

@@ -1,3 +1,4 @@
+
 // Fragment ELF Detection and Code Loader
 
 address $8007a228
@@ -17,8 +18,9 @@ setreg t5,$8007537C
 // Load the currently loaded elf text
 lw t6 zero(t5) 
 
-// if t6 isn't currently anything terminate
-beq t6 zero, :__EOF 
+// if t5 doesn't get set initially, it won't show the main elf till you come back from a 
+// menu
+beq t6 zero, :__MainElfCodeLoader 
 nop
 
 //If the main elf is loaded jump to the code loader
@@ -62,17 +64,21 @@ __OnlineElfCodeLoader:
 ori t1,t1, $a400
 
 __OnlineElfCodeLoaderAddress:
+
 // Gets the address line to our code from the Code stack
 lw t6,$000(t1)
+
 // Gets the data line to our code from the Code stack
 lw t7,0004(t1) 
 
 // Jump back to EOF if t6 is zero (t6 would contain the next adddress)
 beq t6,zero :__EOF
 nop
+
 // Store the data line to the actual address
 sw t7, zero(t6)
 beq zero,zero :__OnlineElfCodeLoaderAddress
+
 // We do not want to nop here for the delay slot
 // Add 8 to t5 so it will grab the next address data pair
 addiu t1,t1,$0008
@@ -83,17 +89,21 @@ __OfflineElfCodeLoader:
 ori t1,t1, $a700
 
 __OfflineElfCodeLoaderAddress:
+
 // Gets the address line to our code from the Code stack
 lw t6,$000(t1)
+
 // Gets the data line to our code from the Code stack
 lw t7,0004(t1) 
 
 // Jump back to EOF if t6 is zero (t6 would contain the next adddress)
 beq t6,zero :__EOF
 nop
+
 // Store the data line to the actual address
 sw t7, zero(t6)
 beq zero,zero :__OfflineElfCodeLoaderAddress
+
 // We do not want to nop here for the delay slot
 // Add 8 to t5 so it will grab the next address data pair
 addiu t1,t1,$0008

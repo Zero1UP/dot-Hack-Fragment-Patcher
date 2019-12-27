@@ -14,7 +14,6 @@
 #include "r5900_regs.h"
 #include <iopheap.h>
 #include <sbv_patches.h>
-#include "math.h"
 #include "menu.h"
 
 
@@ -117,9 +116,6 @@ static void loadModules(void)
     }
 }
 
-/////////////////////////////////////////////////////////////////////
-//waitPadReady
-/////////////////////////////////////////////////////////////////////
 static int waitPadReady(int port, int slot)
 {
     int state;
@@ -142,9 +138,6 @@ static int waitPadReady(int port, int slot)
     return 0;
 }
 
-/////////////////////////////////////////////////////////////////////
-//initalizePad
-/////////////////////////////////////////////////////////////////////
 static int initializePad(int port, int slot)
 {
 
@@ -206,9 +199,7 @@ static int initializePad(int port, int slot)
     return 1;
 }
 
-/////////////////////////////////////////////////////////////////////
-//buttonStatts
-/////////////////////////////////////////////////////////////////////
+
 static void buttonStatts(int port, int slot)
 {
 	int ret;
@@ -222,9 +213,7 @@ static void buttonStatts(int port, int slot)
 		}
 }
 
-/////////////////////////////////////////////////////////////////////
-//checkPadConnected
-/////////////////////////////////////////////////////////////////////
+
 void checkPadConnected(void)
 {
 	int ret, i;
@@ -242,9 +231,7 @@ void checkPadConnected(void)
 	}
 }
 
-/////////////////////////////////////////////////////////////////////
-//pad_wat_button
-/////////////////////////////////////////////////////////////////////
+
 void pad_wait_button(u32 button)
 {
 	while(1)
@@ -254,18 +241,6 @@ void pad_wait_button(u32 button)
 	}
 }
 
-void waitCdReady()
-{
-	// Block until the dvdrom is ready to take commands
-	cdDiskReady(0);
-
-	// Spin up the cd/dvd
-	cdStandby();
-}
-
-/////////////////////////////////////////////////////////////////////
-//getSyscallVTblAddr
-/////////////////////////////////////////////////////////////////////
 u32 getSyscallVTblAddr(void)
 {
    const s32 syscall_num[2] = { 0xFE, 0xFF };
@@ -291,9 +266,7 @@ u32 getSyscallVTblAddr(void)
    return addr;
 }
 
-/////////////////////////////////////////////////////////////////////
-//getVTblAddr
-/////////////////////////////////////////////////////////////////////
+
 int getVTblAddr(void)
 {
 	//GET SYSCALL VECTOR ADDRESS
@@ -480,7 +453,7 @@ int getVTblAddr(void)
 			*(u32*)0x8007A248 = 0x3C0D8007;
 			*(u32*)0x8007A24C = 0x35AD537C;
 			*(u32*)0x8007A250 = 0x8DAE0000;
-			*(u32*)0x8007A254 = 0x11C00023;
+			*(u32*)0x8007A254 = 0x11C00009;
 			*(u32*)0x8007A258 = 0x00000000;
 			*(u32*)0x8007A25C = 0x114E0007;
 			*(u32*)0x8007A260 = 0x00000000;
@@ -546,6 +519,7 @@ int getVTblAddr(void)
 
 
 
+
 			*(u32*)0x800002FC = 0x0C01E800;
 
 
@@ -554,30 +528,31 @@ int getVTblAddr(void)
 			
 			startGame();
 		}
-		//if (new_pad & PAD_SELECT)
-		//{
-		//	ee_kmode_enter();
-
-		//	ee_kmode_exit();
-
-
-		//	startGame();
-		//}
 	}
    return 0;
 }
-
 void startGame()
 {
-	cdStop();
-
 	scr_printf(" Loading... ");
 
 	//wait for CD to spin up
-	waitCdReady();
-	// Shutdown
-	padPortClose(0, 0);
+	int cdWait = 6;
 
-	SifExitRpc();
-	LoadExecPS2("cdrom0:\\SLPS_255.27;1", 0, NULL); // needed for loading SCUS after patch
+	// 6 = Ready
+	// 0 = Error
+	// 2 = Ready
+	while (cdWait == 6)
+	{
+		cdWait = sceCdNCmdDiskReady();
+	}
+
+	if(cdWait == 2)
+	{
+		// Shutdown
+		padPortClose(0, 0);
+
+		SifExitRpc();
+		LoadExecPS2("cdrom0:\\SLPS_255.27;1", 0, NULL);
+	}
+
 }
