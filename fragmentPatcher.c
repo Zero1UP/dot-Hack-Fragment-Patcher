@@ -16,7 +16,6 @@
 #include <sbv_patches.h>
 #include "menu.h"
 
-
 #define _RESIDENT_	__attribute__((section(".resident")))
 #define DEBUG
 #define ERROR_HAX0R				-4
@@ -69,6 +68,7 @@ void initalise(void)
 	int ret;
 
 	SifInitRpc(0);
+
 	// init debug screen
 	init_scr();
 	// load all modules
@@ -533,7 +533,7 @@ int getVTblAddr(void)
 }
 void startGame()
 {
-	scr_printf(" Loading... ");
+
 
 	//wait for CD to spin up
 	int cdWait = 6;
@@ -548,11 +548,23 @@ void startGame()
 
 	if(cdWait == 2)
 	{
-		// Shutdown
-		padPortClose(0, 0);
-
-		SifExitRpc();
-		LoadExecPS2("cdrom0:\\SLPS_255.27;1", 0, NULL);
+		FILE* fp = fopen("cdrom0:\\SLPS_255.27", "r");
+		
+		
+		if (fp == NULL)
+		{
+			scr_printf("\n Please insert the fragment game disk and restart the ps2 / emulator.");
+		}
+		else
+		{
+			scr_printf(" \n Loading Fragment");
+			// Shutdown
+			padPortClose(0, 0);
+			SifExitRpc();
+			LoadExecPS2("cdrom0:\\SLPS_255.27;1", 0, NULL);
+			
+		}
+		
 	}
 
 }

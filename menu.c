@@ -1,7 +1,7 @@
 #include "menu.h"
 void menu_DisplayMain(void)
 {
-	char *currentVersion = "Patch Version: 1.0.5\n";
+	char *currentVersion = "Patch Version: 1.0.6\n";
 	
 	scr_printf(".hack//Fragment Patcher by 1UP\n");
 	scr_printf(currentVersion);
